@@ -1,0 +1,30 @@
+<h1>Unit Converter</h1>
+{{if .IsSubmitted}}
+<h2> value to convert is {{.UnitValue}}</h2>
+<h3> Given unit is {{.GivenUnit}}</h3>
+<h4> Converted value is {{.ConvertedValue}}{{.ConvertToUnit}}</h4>
+{{else}}
+<h1>Enter Value of {{.SelectedUnit}} to be converted</h1>
+<form method="GET" >
+<button type="submit" name="unitToUse" value="weight">Weight</button>
+<button type="submit" name="unitToUse" value="length">Length</button>
+<button type="submit" name="unitToUse" value="temperature">Tempteratue</button>
+</form>
+<form method="POST">
+    <label>Enter the {{.SelectedUnit}} to be converted:</label><br />
+    <input type="text" name="MeasurementValue"><br /><br />
+    <label>Enter the Unit of this value:</label><br />
+    <select id="options" name="isUnit">
+        {{range .UnitsOfValue}}
+        <option value="{{.}}">{{.}}</option>
+        {{end}}
+    </select><br /><br />
+    <label>Enter what unit it is to be converted to:</label><br />
+    <select id="options" name="toUnit">
+        {{range .UnitsOfValue}}
+        <option value="{{.}}">{{.}}</option>
+        {{end}}
+    </select><br /><br />
+    <input type="submit">
+</form>
+{{end}}
